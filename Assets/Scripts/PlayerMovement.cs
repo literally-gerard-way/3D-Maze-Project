@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
     //xyz coordinates
     public Vector3 direction;
+
+    public Rigidbody playerRb;
     // Start is called once before the first frame update
     void Start()
     {
@@ -24,7 +26,9 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //the dot is there to access a functionality of "transform"
-        transform.Translate(direction*Time.deltaTime*speed);
+        //transform.Translate(direction*Time.deltaTime*speed);  not good for rigid body physics
+
+        playerRb.linearVelocity = direction * speed;
     }
 
     private void OnMove(InputValue value)

@@ -17,13 +17,14 @@ public class PlayerCollection : MonoBehaviour
         //Only destroy if collectible
         if (other.CompareTag("Collectible"))
         {
-            Add(1);
+            
             Destroy(other.gameObject);
+            Add(1);
         }
     }
     private void Add (int value)
     {
-        score += value;
+        score = score + value;
         scoreText.text = $"<b>Score:</b> {score}";
     }
 }
