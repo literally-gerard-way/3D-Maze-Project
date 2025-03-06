@@ -1,9 +1,11 @@
 using UnityEngine;
+using TMPro;
 
 public class Health : MonoBehaviour
 {
     public int points = 5;
-    private Vector3 startPoint;
+    public Vector3 startPoint;
+    public TMP_Text healthText;
     void Start()
     {
         startPoint = transform.position;
@@ -12,17 +14,25 @@ public class Health : MonoBehaviour
     {
         if (other.CompareTag("Trap")){
             Damage(1);
+        }else if (other.CompareTag("Checkpoint"))
+        {
+            //set the position based on the checkpoint, but the y variable stays the same
+            startPoint = other.transform.position;
+            startPoint.y = transform.position.y;
         }
     }
     //to remove some health points
     private void Damage(int value)
     {
         points = points - value;
-        if (points < 1){
-            //HOMEWORK: do not destroy player, move the player to the start and reset the points to 5
-            points = 5;
+        healthText.text = $"<b>Health:</b> {points}";
+        //$ lets you put the entire text into "" instead of "Health:" + points
+            //points = 5;
             
             transform.position = startPoint;
+        if (points < 1)
+        {
+             Destroy(gameObject);
         }
     }
 }
