@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
     public int points = 5;
     public Vector3 startPoint;
     public TMP_Text healthText;
+    public ScreenAnimation gameOverScreen;
     void Start()
     {
         startPoint = transform.position;
@@ -32,6 +33,7 @@ public class Health : MonoBehaviour
             transform.position = startPoint;
         if (points < 1)
         {
+            gameOverScreen.StartFade();
              Destroy(gameObject);
         }
     }
