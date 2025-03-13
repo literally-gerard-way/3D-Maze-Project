@@ -5,7 +5,7 @@ using TMPro;
 
 public class PlayerCollection : MonoBehaviour
 {
-    public int score;
+    private int score = 0;
     public TMP_Text scoreText;
 
     private void Start()
