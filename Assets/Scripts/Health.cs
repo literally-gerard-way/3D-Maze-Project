@@ -20,6 +20,10 @@ public class Health : MonoBehaviour
             //set the position based on the checkpoint, but the y variable stays the same
             startPoint = other.transform.position;
             startPoint.y = transform.position.y;
+        }else if (other.CompareTag("fireball"))
+        {
+            Damage(2);
+            Destroy(other.gameObject);
         }
     }
     //to remove some health points
